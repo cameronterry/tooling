@@ -1,0 +1,14 @@
+# IDEs / OSes
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Debugging
+logs/
+*.bak
+*.log
+*.sql
+
+# Dependencies
+node_modules
