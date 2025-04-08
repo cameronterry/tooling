@@ -118,8 +118,7 @@ module.exports = {
 		new CopyWebpackPlugin( {
 			patterns: [
 				/**
-				 * Move the `block.json` files to the `dist/` folder, which is used by the `ThePluginTheme\Assets` class as
-				 * part of the block registration.
+				 * Move the `block.json` files to the `dist/` folder, which will be handled by PHP for enqueuing WP block assets.
 				 */
 				{
 					from: join( blockDirectory, '**/block.json' ),
