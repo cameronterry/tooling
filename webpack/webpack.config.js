@@ -41,8 +41,6 @@ for ( const presetModule of babelPresetModules ) {
 	}
 }
 
-require.resolve(  )
-
 const blockDirectory = resolve( process.cwd(), 'includes/blocks/' );
 
 const isProduction = process.env.NODE_ENV === 'production';
