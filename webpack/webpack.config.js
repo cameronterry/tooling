@@ -24,6 +24,25 @@ if ( ! packageJson.buildEntryPoints ) {
 	process.exit();
 }
 
+/**
+ * Include the various Babel presets, if available, to be used.
+ */
+const babelPresets = [];
+const babelPresetModules = [
+	'@babel/preset-react',
+	'@wordpress/babel-preset-default',
+];
+for ( const presetModule of babelPresetModules ) {
+	try {
+		const presetConfig = require.resolve( presetModule );
+		babelPresets.push( presetConfig );
+	} catch {
+		// Just skip.
+	}
+}
+
+require.resolve(  )
+
 const blockDirectory = resolve( process.cwd(), 'includes/blocks/' );
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -154,10 +173,7 @@ module.exports = {
 					{
 						loader: require.resolve( 'babel-loader' ),
 						options: {
-							presets: [
-								require.resolve( '@babel/preset-react' ),
-								require.resolve( '@wordpress/babel-preset-default' ),
-							],
+							presets: babelPresets,
 						},
 					}
 				]
