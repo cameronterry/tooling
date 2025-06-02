@@ -1,15 +1,16 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const CssMinimizerPlugin = require( 'css-minimizer-webpack-plugin' );
 const { sync: glob } = require( 'fast-glob' );
-const { readFileSync } = require('fs');
+const { readFileSync } = require( 'fs' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const TerserPlugin = require( 'terser-webpack-plugin' );
 const {
 	dirname,
 	extname,
 	join,
 	resolve
 } = require( 'path' );
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 let DependencyExtractionWebpackPlugin;
 try {
@@ -195,6 +196,7 @@ module.exports = {
 		minimize: true,
 		minimizer: [
 			new CssMinimizerPlugin(),
+			new TerserPlugin(),
 		]
 	},
 }
