@@ -195,16 +195,18 @@ module.exports = {
 					{
 						loader: require.resolve( 'postcss-loader' ),
 						options: {
-							plugins: {
-								'postcss-import': {},
-								'postcss-mixins': {},
-								'postcss-preset-env': {
-									browsers: 'last 2 versions',
-									features: {
-										'nesting-rules': true,
-									},
-								}
-							},
+							postcssOptions: {
+								plugins: {
+									'postcss-import': {},
+									'postcss-mixins': {},
+									'postcss-preset-env': {
+										browsers: 'last 2 versions',
+										features: {
+											'nesting-rules': true,
+										},
+									}
+								},
+							}
 						},
 					},
 				]
