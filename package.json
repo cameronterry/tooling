@@ -1,6 +1,6 @@
 {
 	"name": "@cameronterry/tooling",
-	"version": "1.0.0",
+	"version": "0.1.1",
 	"description": "Reusable tooling for developing projects with Webpack.",
 	"license": "GPL-2.0-only",
 	"author": {
