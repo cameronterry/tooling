@@ -44,6 +44,18 @@ for ( const presetModule of babelPresetModules ) {
 
 const blockDirectory = resolve( process.cwd(), 'includes/blocks/' );
 
+let globalStyles = [];
+if ( packageJson?.globalStyles ) {
+	packageJson.globalStyles.forEach( ( globalStyle ) => {
+		const globalStylesDir = resolve( process.cwd(), globalStyle );
+		const globalStylesDirFiles = glob( `${globalStylesDir}/**/*.css` );
+		globalStyles = [
+			...globalStyles,
+			...globalStylesDirFiles,
+		];
+	} );
+}
+
 const isProduction = process.env.NODE_ENV === 'production';
 const mode = isProduction ? 'production' : 'development';
 
@@ -198,6 +210,9 @@ module.exports = {
 							postcssOptions: {
 								plugins: {
 									'postcss-import': {},
+									'@csstools/postcss-global-data': {
+										files: globalStyles,
+									},
 									'postcss-mixins': {},
 									'postcss-preset-env': {
 										browsers: 'last 2 versions',
