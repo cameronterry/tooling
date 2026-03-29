@@ -1,9 +1,6 @@
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-const CssMinimizerPlugin = require( 'css-minimizer-webpack-plugin' );
+const { rspack } = require('@rspack/core');
 const { sync: glob } = require( 'fast-glob' );
 const { readFileSync } = require( 'fs' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const TerserPlugin = require( 'terser-webpack-plugin' );
 const {
 	dirname,
 	extname,
@@ -145,7 +142,7 @@ module.exports = {
 	plugins: [
 		new RemoveEmptyScriptsPlugin(),
 		DependencyExtractionWebpackPlugin ? new DependencyExtractionWebpackPlugin() : null,
-		new CopyWebpackPlugin( {
+		new rspack.CopyRspackPlugin( {
 			patterns: [
 				/**
 				 * Move the `block.json` files to the `dist/` folder, which will be handled by PHP for enqueuing WP block assets.
@@ -170,7 +167,7 @@ module.exports = {
 		/**
 		 * Extract CSS to a separate file.
 		 */
-		new MiniCssExtractPlugin( {
+		new rspack.CssExtractRspackPlugin( {
 			filename: '[name].css',
 			chunkFilename: '[id].css',
 		} )
@@ -196,7 +193,7 @@ module.exports = {
 			{
 				test: /\.(css)$/,
 				use: [
-					MiniCssExtractPlugin.loader,
+					rspack.CssExtractRspackPlugin.loader,
 					{
 						loader: require.resolve( 'css-loader' ),
 						options: {
@@ -231,8 +228,8 @@ module.exports = {
 	optimization: {
 		minimize: true,
 		minimizer: [
-			new CssMinimizerPlugin(),
-			new TerserPlugin(),
+			new rspack.LightningCssMinimizerRspackPlugin(),
+			new rspack.SwcJsMinimizerRspackPlugin(),
 		]
 	},
 }

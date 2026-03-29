@@ -3,7 +3,7 @@
 /**
  * External dependencies
  */
-const webpack = require( 'webpack' );
+const webpack = require( '@rspack' );
 
 const config = require( '../webpack/webpack.config' );
 

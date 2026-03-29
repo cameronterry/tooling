@@ -1,6 +1,6 @@
 {
 	"name": "@cameronterry/tooling",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Reusable tooling for developing projects with Webpack.",
 	"license": "GPL-2.0-only",
 	"author": {
@@ -12,6 +12,8 @@
 		"@babel/preset-env": "^7.25.9",
 		"@babel/preset-react": "^7.25.9",
 		"@csstools/postcss-global-data": "^4.0.0",
+		"@rspack/cli": "^1.7.10",
+		"@rspack/core": "^1.7.10",
 		"@svgr/webpack": "^8.1.0",
 		"babel-loader": "^10.0.0",
 		"copy-webpack-plugin": "^14.0.0",
@@ -25,8 +27,6 @@
 		"postcss-mixins": "^12.1.2",
 		"postcss-preset-env": "^11.2.0",
 		"terser-webpack-plugin": "^5.3.14",
-		"webpack": "^5.95.0",
-		"webpack-cli": "^6.0.1",
 		"webpack-remove-empty-scripts": "^1.0.4"
 	},
 	"bin": {
